@@ -2,7 +2,7 @@ const User = require('../models/user');
 const Exercise = require('../models/exercise');
 const router = require('express').Router();
 
-router.post('/exercise/new-user', (req, res) => {
+router.post('/exercise/new-user', (req, res, next) => {
   const { username } = req.body;
   const newUser = new User({ username });
   newUser.save()
