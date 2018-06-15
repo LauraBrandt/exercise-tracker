@@ -12,10 +12,7 @@ const exerciseSchema = new mongoose.Schema({
   username: String,
   descripition: String,
   duration: Number,
-  date: {
-    type: Date,
-    default: Date.now
-  }
+  date: Date
 });
 
 module.exports = mongoose.model('Exercise', exerciseSchema);
