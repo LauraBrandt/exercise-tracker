@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
   _id: {
     type: String,
     index: true,
-    'default': shortid.generate
+    default: shortid.generate
   }
 });
 
