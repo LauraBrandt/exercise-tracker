@@ -9,7 +9,7 @@ const exerciseSchema = new mongoose.Schema({
     required: true
   },
   username: String,
-  descripition: String,
+  description: String,
   duration: Number,
   date: Date
 });
