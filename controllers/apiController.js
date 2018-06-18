@@ -4,7 +4,7 @@ const Exercise = require('../models/exercise');
 const addUser = (req, res, next) => {
   const { username } = req.body;
   const newUser = new User({ username });
-  newUser.save()
+  return newUser.save()
     .then(user => {
       const { username, _id } = user;
       res.json({ username, _id });
@@ -22,7 +22,7 @@ const addUser = (req, res, next) => {
 }
 
 const addExercise = (req, res, next) => {
-  User.findById(req.body.userId, (err, user) => {
+  return User.findById(req.body.userId, (err, user) => {
     if (err) {
       return next(err);
     } else if (!user) {
@@ -33,8 +33,8 @@ const addExercise = (req, res, next) => {
     } else {
       const newExercise = new Exercise(req.body);
       newExercise.username = user.username;
-      newExercise.date = newExercise.date || new Date();
-      newExercise.save()
+      newExercise.date = newExercise.date || Date.now();
+      return newExercise.save()
         .then(exercise => {
           exercise = exercise.toObject();
           exercise.date = exercise.date.toDateString();
